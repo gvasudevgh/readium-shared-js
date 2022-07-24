@@ -278,7 +278,6 @@ var ReaderView = function (options) {
             //application will be notified by the same Globals.Events.PAGINATION_CHANGED event
             _mediaOverlayPlayer.onPageChanged(pageChangeData);
 
-            //PEAQUE TODO - CLEAN UP
             console.log(this.getBodyElement());
             console.log(pageChangeData);
             //$('#page-canvas').html(readium.reader.getViewScale());
@@ -924,9 +923,7 @@ var ReaderView = function (options) {
         return undefined;
     };
 
-    ////PEAQUE TODO - CLEAN UP
-    this.doTest = function(data) {
-
+    this.doTest = function() {
         var content = "";
 
         console.log(_currentView);
@@ -948,28 +945,14 @@ var ReaderView = function (options) {
         content += '<br/>';
         content += cfis.lastVisibleCfi.toString();
         content += '<br/>';
-        content += '<br/>';
-        content += '<br/>';
-        
-        content += data.anchorNodeText;
-        
-        content += '<br/>';
-        content += '<br/>';
-        content += '<br/>';
-        
-        /* Visible content on the page
-    }*/
-        var elements = _currentView.getVisibleElements('*', false);
+        /*
+        var elements = _currentView.getVisibleElements('p', false);
         for (const node of elements) {
             content += node.element.innerHTML;
-            if (node.element.innerText === data.anchorNodeText) {
-                console.log(_currentView.getCfiForElement(node.element));
-            }
-        }
+        }*/
         return content;
     }
 
-    ////PEAQUE TODO - CLEAN UP
     this.getBodyElement = function () {
 
         if (_currentView) {

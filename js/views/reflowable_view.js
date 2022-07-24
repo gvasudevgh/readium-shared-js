@@ -1061,7 +1061,6 @@ var ReflowableView = function(options, reader){
         return _navigationLogic.getElement(selector);
     };
 
-    // PEAQUE TODO - CLEAN UP
     this.getBodyElement = function() {
 
         return _navigationLogic.getBodyElement();
