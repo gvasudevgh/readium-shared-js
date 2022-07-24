@@ -278,12 +278,9 @@ var ReaderView = function (options) {
             //application will be notified by the same Globals.Events.PAGINATION_CHANGED event
             _mediaOverlayPlayer.onPageChanged(pageChangeData);
 
-            /*
             //PEAQUE TODO - CLEAN UP
             console.log(this.getBodyElement());
-            this.doTest(pageChangeData);
             console.log(pageChangeData);
-            */
             //$('#page-canvas').html(readium.reader.getViewScale());
 
             _.defer(function () {
@@ -954,23 +951,18 @@ var ReaderView = function (options) {
         content += '<br/>';
         content += '<br/>';
         
-        if (data) {
-            content += data.anchorNodeText;
-            content += '<br/>';
-            content += '<br/>';
-            content += '<br/>';
-        }
+        content += data.anchorNodeText;
         
+        content += '<br/>';
+        content += '<br/>';
+        content += '<br/>';
         
         /* Visible content on the page
-        Be careful of using "*" here because the then the body element is included 
-        and you would have to filter it out by the tagName. 
-        Otherwise the entire content of the html page would be included
-        */
-        var elements = _currentView.getVisibleElements('p', false);
+    }*/
+        var elements = _currentView.getVisibleElements('*', false);
         for (const node of elements) {
             content += node.element.innerHTML;
-            if (data && node.element.innerText === data.anchorNodeText) {
+            if (node.element.innerText === data.anchorNodeText) {
                 console.log(_currentView.getCfiForElement(node.element));
             }
         }
