@@ -254,7 +254,6 @@ var ReaderView = function (options) {
 
             Globals.logEvent("CONTENT_DOCUMENT_LOADED", "EMIT", "reader_view.js [ " + spineItem.href + " ]");
             self.emit(Globals.Events.CONTENT_DOCUMENT_LOADED, $iframe, spineItem);
-   
         });
 
         _currentView.on(Globals.Events.CONTENT_DOCUMENT_LOAD_START, function ($iframe, spineItem) {
@@ -277,10 +276,6 @@ var ReaderView = function (options) {
             //mediaOverlayPlayer because we hve to guarantee that mediaOverlayPlayer will be updated before the host
             //application will be notified by the same Globals.Events.PAGINATION_CHANGED event
             _mediaOverlayPlayer.onPageChanged(pageChangeData);
-
-            console.log(this.getBodyElement());
-            console.log(pageChangeData);
-            //$('#page-canvas').html(readium.reader.getViewScale());
 
             _.defer(function () {
                 Globals.logEvent("PAGINATION_CHANGED", "EMIT", "reader_view.js");
@@ -918,45 +913,6 @@ var ReaderView = function (options) {
 
         if (_currentView) {
             return _currentView.getElementById(spineItemIdref, id);
-        }
-
-        return undefined;
-    };
-
-    this.doTest = function() {
-        var content = "";
-
-        console.log(_currentView);
-        console.log(getCfisForVisibleRegion());
-        console.log(this.getFirstVisibleCfi());
-        
-        var cfis = getCfisForVisibleRegion();
-        content += "First CFI <br/>";
-        content += cfis.firstVisibleCfi.contentCFI;
-        content += '<br/>';
-        content += cfis.firstVisibleCfi.idref;
-        content += '<br/>';
-        content += cfis.firstVisibleCfi.toString();
-        content += '<br/>';
-        content += "Last CFI <br/>";
-        content += cfis.lastVisibleCfi.contentCFI;
-        content += '<br/>';
-        content += cfis.lastVisibleCfi.idref;
-        content += '<br/>';
-        content += cfis.lastVisibleCfi.toString();
-        content += '<br/>';
-        /*
-        var elements = _currentView.getVisibleElements('p', false);
-        for (const node of elements) {
-            content += node.element.innerHTML;
-        }*/
-        return content;
-    }
-
-    this.getBodyElement = function () {
-
-        if (_currentView) {
-            return _currentView.getBodyElement();
         }
 
         return undefined;

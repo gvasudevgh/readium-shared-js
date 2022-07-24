@@ -1061,11 +1061,6 @@ var ReflowableView = function(options, reader){
         return _navigationLogic.getElement(selector);
     };
 
-    this.getBodyElement = function() {
-
-        return _navigationLogic.getBodyElement();
-    };
-
     this.getFirstVisibleMediaOverlayElement = function() {
 
         return _navigationLogic.getFirstVisibleMediaOverlayElement();
